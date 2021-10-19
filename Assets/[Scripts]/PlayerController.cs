@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         _Move();
-        //_CheckBounds();
+        _CheckBounds();
         _FireBullet();
     }
 
@@ -87,11 +87,11 @@ public class PlayerController : MonoBehaviour
 
         if (m_touchesEnded.y != 0.0f)
         {
-           transform.position = new Vector2(Mathf.Lerp(transform.position.y, m_touchesEnded.y, verticalTValue), transform.position.x);
+           transform.position = new Vector2(transform.position.x,Mathf.Lerp(transform.position.y, m_touchesEnded.y, verticalTValue));
         }
         else
         {
-            Vector2 newVelocity = m_rigidBody.velocity + new Vector2(direction * verticalSpeed, 0.0f);
+            Vector2 newVelocity = m_rigidBody.velocity + new Vector2(0.0f,direction * verticalSpeed);
             m_rigidBody.velocity = Vector2.ClampMagnitude(newVelocity, maxSpeed);
             m_rigidBody.velocity *= 0.99f;
         }
