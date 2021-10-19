@@ -1,7 +1,20 @@
-﻿using System.Collections;
+﻿//--------------------------------------------------------------------------------
+//------------------------------BulletFactory.cs--------------------------------
+//------------------------------Eric Galway---------------------------------------
+//------------------------------101252535-----------------------------------------
+//------------------------------Last Modified: 18/10/2021-------------------------
+//------------------------------Description---------------------------------------
+//             This script creates different types of bullets for the 
+//             BulletManager class. These bullets are randomly generated
+//             amongst three different types of bullets.
+//------------------------------Revision History----------------------------------
+//------------------------------Version 1.0 - original File-----------------------
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Class that handles creation of the players bullets for the bullet pool
 [System.Serializable]
 public class BulletFactory : MonoBehaviour
 {
@@ -10,6 +23,7 @@ public class BulletFactory : MonoBehaviour
     public GameObject fatBullet;
     public GameObject pulsingBullet;
 
+    //Creates a random bullet based upon three bullet types
     public GameObject createBullet(BulletType type = BulletType.RANDOM)
     {
         if (type == BulletType.RANDOM)
@@ -19,6 +33,7 @@ public class BulletFactory : MonoBehaviour
         }
 
         GameObject tempBullet = null;
+        //Selects between the bullet type enumeration 
         switch (type)
         {
             case BulletType.REGULAR:

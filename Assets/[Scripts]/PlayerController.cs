@@ -1,9 +1,22 @@
-﻿using System.Collections;
+﻿//--------------------------------------------------------------------------------
+//------------------------------PlayerController.cs-------------------------------
+//------------------------------Eric Galway---------------------------------------
+//------------------------------101252535-----------------------------------------
+//------------------------------Last Modified: 18/10/2021-------------------------
+//------------------------------Description---------------------------------------
+//             This script controls the movement, bounds checking and
+//             bullet firing of the player character.
+//------------------------------Revision History----------------------------------
+//------------------------------Version 1.0 - original File-----------------------
+//------------------------------Version 1.1 - Switched to vertical movement-------
+
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEditor;
 using UnityEngine;
 
+//Class that encapsulates and controls all player movement and bullet firing
 public class PlayerController : MonoBehaviour
 {
     public BulletManager bulletManager;
@@ -37,7 +50,7 @@ public class PlayerController : MonoBehaviour
         _CheckBounds();
         _FireBullet();
     }
-
+    //Fires a bullet at the player position if the bullet manager has a bullet and the timer has been met.
      private void _FireBullet()
     {
         // delay bullet firing 
@@ -46,7 +59,7 @@ public class PlayerController : MonoBehaviour
             bulletManager.GetBullet(transform.position);
         }
     }
-
+    //Moves the player with touch input to the vertical position that was touched
     private void _Move()
     {
         float direction = 0.0f;
@@ -96,7 +109,8 @@ public class PlayerController : MonoBehaviour
             m_rigidBody.velocity *= 0.99f;
         }
     }
-
+    //Checks if the player position is inside the set bounds. If not sets the player position to the
+    //bounds limit.
     private void _CheckBounds()
     {
         // check right bounds
